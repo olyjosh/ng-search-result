@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+
+
+    <title>Title</title>
+    <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.4.8/angular.min.js"></script>
+    <script src="ng-search-result.js"></script>
+    <style>
+        .found {
+            color:red;
+        }
+    </style>
+</head>
+<body>
+
+
+<script>
+    var app = angular.module('myApp', ['ngSearchResult']);
+    app.controller('myCtrl', function($scope) {
+        $scope.firstName = "John";
+        $scope.lastName = "Doe";
+    });
+</script>
+
+<div ng-app="myApp" ng-controller="myCtrl">
+
+    First Name: <input type="text" ng-model="firstName"><br>
+    Last Name: <input type="text" ng-model="lastName"><br>
+    <br>
+    Full Name: {{firstName + " " + lastName}}
+
+    <div ng-search-result onChange="lastName">{{firstName}}We are looking at Doe those that looks like look. Look but I'm not playing with the guys that look like lookusae</div>
+
+
+</div>
+
+
+<!--<div ng-search-result  >We are looking at those that looks like look. Look but I'm not playing with the guys that look like lookusae</div>-->
+
+
+
+</body>
+</html>
