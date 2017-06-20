@@ -4,20 +4,9 @@
 
 (function () {
     'use strict';
-    var isStart = false;
-    var auto = false;
-    var src = '';
-    var cWidth = 100;
-    var cHeight = 100;
-    var imgWidth = 1000;
-    var imgHeigth = 100;
-    var loop = true;
-    var noOfFrames = 0;
-    var delay = 3;
-
-
+    
     var div;
-    var searchKey;
+    var searchKey ="that";
 
 
     var app = angular.module('ngSearchResult', []);
@@ -27,7 +16,15 @@
             restrict: 'AE',
             scope: {'onChange':'=' },
             link: function(scope, elm, attrs) {
-                scope.$watch('onChange', function(nVal) { elm.val(nVal); });
+                div =elm;
+                // console.log(div.childNodes)
+                
+                scope.$watch('onChange', function(nVal) {
+                    elm.val(nVal);
+                    console.log(elm.childNodes)
+                    service.doo(elm);
+
+                });
                 elm.bind('blur', function() {
                     var currentValue = elm.val();
                     if( scope.onChange !== currentValue ) {
@@ -76,6 +73,8 @@
 
         function changeNode(n, r, f) {
             f=n.childNodes;
+
+            console.log('\n\nFROM bm :'+n);
             // for(c in f) changeNode(f[c], r);
             for(var i =0; i<f.length; i++)
                 changeNode(f[i], r);
@@ -88,22 +87,7 @@
             }
         }
 
-        function changeNode(n, r, f) {
-            f=n.childNodes;
-            // for(c in f) changeNode(f[c], r);
-            for(var i =0; i<f.length; i++)
-                changeNode(f[i], r);
-
-            if (n.data) {
-                f = document.createElement('span');
-                f.innerHTML = n.data.replace(r, '<span class=found>$1</span>');
-                n.parentNode.insertBefore(f, n);
-                n.parentNode.removeChild(n);
-            }
-        }
-
-
-        this.doo = function () {
+        this.doo = function (n) {
             var spans = document.getElementsByClassName('found');
             while (spans.length) {
                 var p = spans[0].parentNode;
@@ -111,7 +95,7 @@
             }
 
             if (searchKey)
-                changeNode(div, new RegExp('('+searchKey+')','gi'));
+                changeNode(n, new RegExp('('+searchKey+')','gi'));
         }
 
     }
