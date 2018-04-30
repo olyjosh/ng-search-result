@@ -35,33 +35,6 @@
                     }
                 });
             }
-            // scope : {
-            //     key : '='
-            // },
-            // link: function ($scope, element, attrs) {
-            //
-            //     // div = element[0];
-            //     // searchKey=$scope.key;
-            //     // $scope.$watch(searchKey, function() {
-            //     //     alert('hey, my var has changed!');
-            //     // });
-            //     // service.doo();
-            //     // // element.bind("DOMSubtreeModified",function(){
-            //     // //     alert('changed');
-            //     // // });
-            //
-            //
-            //     $scope.$watch(
-            //         function () { return element[0].childNodes.length; },
-            //         function (newValue, oldValue) {
-            //             if (newValue !== oldValue) {
-            //                 // code goes here
-            //                 alert('NJSnhdkn');
-            //             }
-            //         }
-            //     );
-            //
-            // }
         };
     });
 
